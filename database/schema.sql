@@ -1,10 +1,22 @@
-CREATE TABLE IF NOT EXISTS login (
+CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    apelido VARCHAR(100) NOT NULL,
-    senha TEXT NOT NULL,
-    telefone VARCHAR(15) UNIQUE NOT NULL,
-    uf CHAR(2) NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    nivel_acesso VARCHAR(10) CHECK (nivel_acesso IN ('ADM', 'Usuário')) NOT NULL
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    tipo_usuario VARCHAR(20) NOT NULL CHECK (tipo_usuario IN ('usuario', 'cooperativa', 'adm'))
+);
+
+
+CREATE TABLE cooperativas (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT UNIQUE NOT NULL REFERENCES usuarios(id),
+    nome_cooperativa VARCHAR(100) NOT NULL,
+    cnpj VARCHAR(20) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE administradores (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT UNIQUE NOT NULL REFERENCES usuarios(id),
+    permissao_geral BOOLEAN DEFAULT TRUE
 );
