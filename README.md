@@ -13,7 +13,7 @@ Contém os dados básicos de qualquer tipo de usuário.
 - `senha`: senha criptografada
 - `tipo_usuario`: pode ser 'usuario', 'empresa' ou 'adm'
 
-### Tabela: `empresas`
+### Tabela: `cooperativas`
 Contém os dados específicos das empresas, referenciando um usuário.
 
 - `usuario_id`: referencia um `usuario` com tipo 'empresa'
@@ -31,6 +31,3 @@ Contém os dados específicos de administradores.
 2. Execute `seed.sql` para popular com dados de exemplo.
 3. Integre no backend conforme o tipo de usuário (acesso baseado em `tipo_usuario`).
 
----
-
-Se quiser, posso gerar um `.zip` com os arquivos prontos para download. Quer que eu monte isso para você?
